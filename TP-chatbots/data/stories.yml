@@ -1,0 +1,95 @@
+version: "3.1"
+
+stories:
+- story: salutation et au revoir
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: réservation de vol complète
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: book_flight
+      entities:
+        - ville_depart: "الدار البيضاء"
+        - ville_destination: "باريس"
+    - action: flight_form
+    - active_loop: flight_form
+    - active_loop: null
+    - action: action_search_flights
+    - intent: select_option
+      entities:
+        - option_id: "1"
+    - action: action_select_option
+    - intent: confirm_reservation
+    - action: action_confirm_reservation
+    - action: utter_goodbye
+
+- story: réservation de vol avec changement
+  steps:
+    - intent: book_flight
+    - action: flight_form
+    - active_loop: flight_form
+    - active_loop: null
+    - action: action_search_flights
+    - intent: change_option
+    - action: action_change_option
+    - intent: select_option
+      entities:
+        - option_id: "2"
+    - action: action_select_option
+    - intent: confirm_reservation
+    - action: action_confirm_reservation
+    - action: utter_goodbye
+
+- story: réservation d'hôtel complète
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: book_hotel
+      entities:
+        - ville_hotel: "دبي"
+        - categorie_hotel: "5 نجوم"
+    - action: hotel_form
+    - active_loop: hotel_form
+    - active_loop: null
+    - action: action_search_hotels
+    - intent: select_option
+      entities:
+        - option_id: "1"
+    - action: action_select_option
+    - intent: confirm_reservation
+    - action: action_confirm_reservation
+    - action: utter_goodbye
+
+- story: réservation d'hôtel avec changement
+  steps:
+    - intent: book_hotel
+    - action: hotel_form
+    - active_loop: hotel_form
+    - active_loop: null
+    - action: action_search_hotels
+    - intent: change_option
+    - action: action_change_option
+    - intent: select_option
+      entities:
+        - option_id: "1"
+    - action: action_select_option
+    - intent: confirm_reservation
+    - action: action_confirm_reservation
+    - action: utter_goodbye
+
+- story: demande hors sujet
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+    - intent: book_flight
+    - action: flight_form
+    - active_loop: flight_form
+    - active_loop: null
+    - action: action_search_flights

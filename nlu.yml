@@ -1,0 +1,107 @@
+nlu_content = """version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - السلام عليكم
+    - مرحبا
+    - أهلاً
+    - صباح الخير
+    - مساء الخير
+    - هلا
+    - أهلاً وسهلاً
+
+- intent: goodbye
+  examples: |
+    - وداعاً
+    - إلى اللقاء
+    - مع السلامة
+    - شكراً وداعاً
+
+- intent: affirm
+  examples: |
+    - نعم
+    - أجل
+    - صحيح
+    - بالتأكيد
+    - موافق
+    - طبعاً
+
+- intent: deny
+  examples: |
+    - لا
+    - كلا
+    - غير صحيح
+    - لا أريد
+
+- intent: book_flight
+  examples: |
+    - أريد حجز رحلة طيران
+    - أريد السفر من [الدار البيضاء](ville_depart) إلى [باريس](ville_destination)
+    - احجز لي تذكرة طيران من [الرباط](ville_depart) إلى [لندن](ville_destination)
+    - أريد تذكرة من [مراكش](ville_depart) إلى [دبي](ville_destination) في [15 ديسمبر](date_depart)
+    - أبحث عن رحلة [ذهاب وعودة](type_vol) من [القاهرة](ville_depart) إلى [إسطنبول](ville_destination)
+    - حجز طيران [درجة أولى](classe) من [الدار البيضاء](ville_depart) إلى [نيويورك](ville_destination)
+    - تذكرة طيران [اقتصادية](classe) [ذهاب فقط](type_vol)
+    - أحتاج رحلة من [تونس](ville_depart) إلى [روما](ville_destination)
+    - طيران من [الرياض](ville_depart) إلى [بيروت](ville_destination) يوم [5 مارس](date_depart)
+
+- intent: book_hotel
+  examples: |
+    - أريد حجز فندق
+    - احجز لي فندق في [باريس](ville_hotel)
+    - أبحث عن فندق [5 نجوم](categorie_hotel) في [دبي](ville_hotel)
+    - أريد فندق في حي [المدينة القديمة](quartier) في [مراكش](ville_hotel)
+    - احجز غرفة فندق [4 نجوم](categorie_hotel) لـ[شخصين](nombre_personnes)
+    - فندق في [إسطنبول](ville_hotel) لـ[3 أشخاص](nombre_personnes)
+    - فندق في [روما](ville_hotel) لـ[4 أشخاص](nombre_personnes) [5 نجوم](categorie_hotel)
+
+- intent: select_option
+  examples: |
+    - اختر الخيار الأول
+    - أريد الخيار [1](option_id)
+    - الخيار رقم [2](option_id)
+    - أختار [3](option_id)
+    - الخيار [الثاني](option_id)
+    - هذا الخيار يناسبني
+    - الخيار [الأول](option_id)
+
+- intent: change_option
+  examples: |
+    - أريد تغيير الخيار
+    - لا يناسبني أرجو التغيير
+    - أريد خيارات أخرى
+    - غير لي التاريخ
+    - أريد تغيير الدرجة
+    - هل هناك خيارات أخرى؟
+    - لا أريد هذا الخيار
+
+- intent: confirm_reservation
+  examples: |
+    - أؤكد الحجز
+    - نعم أكد الحجز
+    - تأكيد الحجز
+    - أوافق على الحجز
+    - نعم هذا ما أريد
+    - تأكيد
+    - أجل احجز
+    - موافق على كل شيء
+
+- intent: inform
+  examples: |
+    - [الدار البيضاء](ville_depart)
+    - [باريس](ville_destination)
+    - [20 ديسمبر](date_depart)
+    - [اقتصادية](classe)
+    - [ذهاب وعودة](type_vol)
+    - [5 نجوم](categorie_hotel)
+    - [شخصان](nombre_personnes)
+    - [المدينة القديمة](quartier)
+
+- intent: out_of_scope
+  examples: |
+    - ما هو الطقس؟
+    - احتاج مساعدة طبية
+    - كم الساعة؟
+    - أريد ترجمة
+"""
