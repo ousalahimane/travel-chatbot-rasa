@@ -1,0 +1,175 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - book_flight
+  - book_hotel
+  - select_option
+  - change_option
+  - confirm_reservation
+  - inform
+  - out_of_scope
+
+entities:
+  - ville_depart
+  - ville_destination
+  - date_depart
+  - date_retour
+  - classe
+  - type_vol
+  - categorie_hotel
+  - ville_hotel
+  - quartier
+  - nombre_personnes
+  - option_id
+
+slots:
+  ville_depart:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ville_depart
+  ville_destination:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ville_destination
+  date_depart:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date_depart
+  date_retour:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date_retour
+  classe:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: classe
+  type_vol:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: type_vol
+  categorie_hotel:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: categorie_hotel
+  ville_hotel:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ville_hotel
+  quartier:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: quartier
+  nombre_personnes:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: nombre_personnes
+  option_id:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: option_id
+  reservation_type:
+    type: text
+    mappings:
+      - type: custom
+  current_offer:
+    type: text
+    mappings:
+      - type: custom
+
+responses:
+  utter_greet:
+    - text: "أهلاً وسهلاً! مرحباً بك في وكالة السفر. كيف يمكنني مساعدتك اليوم؟ هل تريد حجز رحلة طيران أم فندق؟"
+
+  utter_goodbye:
+    - text: "شكراً لك على تواصلك معنا. نتمنى لك رحلة موفقة! إلى اللقاء! ✈️"
+
+  utter_ask_ville_depart:
+    - text: "من أي مدينة ستغادر؟"
+
+  utter_ask_ville_destination:
+    - text: "إلى أي مدينة تريد السفر؟"
+
+  utter_ask_date_depart:
+    - text: "ما هو تاريخ المغادرة؟ (مثال: 2024-12-25)"
+
+  utter_ask_date_retour:
+    - text: "ما هو تاريخ العودة؟ (مثال: 2024-12-30)"
+
+  utter_ask_classe:
+    - text: "ما هي الدرجة التي تفضلها؟ (اقتصادية، رجال أعمال، أولى)"
+
+  utter_ask_type_vol:
+    - text: "هل تريد رحلة ذهاب فقط أم ذهاب وعودة؟"
+
+  utter_ask_categorie_hotel:
+    - text: "ما هي فئة الفندق التي تفضلها؟ (3 نجوم، 4 نجوم، 5 نجوم)"
+
+  utter_ask_ville_hotel:
+    - text: "في أي مدينة تريد الإقامة؟"
+
+  utter_ask_quartier:
+    - text: "هل لديك تفضيل لحي معين أو منطقة في المدينة؟"
+
+  utter_ask_nombre_personnes:
+    - text: "كم عدد الأشخاص الذين سيقيمون في الفندق؟"
+
+  utter_out_of_scope:
+    - text: "عذراً، لا أستطيع المساعدة في هذا الموضوع. أنا متخصص في حجز رحلات الطيران والفنادق. هل تريد مساعدة في أحدهما؟"
+
+  utter_confirm_ask:
+    - text: "هل تريد تأكيد هذا الحجز؟ (نعم/لا)"
+
+  utter_change_ask:
+    - text: "ما الذي تريد تغييره في حجزك؟"
+
+actions:
+  - action_search_flights
+  - action_search_hotels
+  - action_confirm_reservation
+  - action_change_option
+  - action_select_option
+  - utter_greet
+  - utter_goodbye
+  - utter_ask_ville_depart
+  - utter_ask_ville_destination
+  - utter_ask_date_depart
+  - utter_ask_date_retour
+  - utter_ask_classe
+  - utter_ask_type_vol
+  - utter_ask_categorie_hotel
+  - utter_ask_ville_hotel
+  - utter_ask_quartier
+  - utter_ask_nombre_personnes
+  - utter_out_of_scope
+  - utter_confirm_ask
+  - utter_change_ask
+
+forms:
+  flight_form:
+    required_slots:
+      - ville_depart
+      - ville_destination
+      - date_depart
+      - classe
+      - type_vol
+
+  hotel_form:
+    required_slots:
+      - ville_hotel
+      - categorie_hotel
+      - nombre_personnes

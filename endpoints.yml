@@ -1,0 +1,26 @@
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+# Tracker store (SQLite par défaut pour le développement local)
+# Pour la production, utiliser PostgreSQL ou Redis
+tracker_store:
+  type: SQLTrackerStore
+  dialect: sqlite
+  db: tracker.db
+
+# Event broker (optionnel, pour le monitoring)
+# event_broker:
+#   type: pika
+#   url: localhost
+#   username: guest
+#   password: guest
+#   queues:
+#     - rasa_core_events
+
+# Lock store (pour éviter les conflits de messages simultanés)
+lock_store:
+  type: "in_memory"
+
+# NLG server (optionnel)
+# nlg:
+#   url: http://localhost:5056/nlg
